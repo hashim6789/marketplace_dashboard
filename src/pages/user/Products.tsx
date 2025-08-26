@@ -13,15 +13,19 @@ function Products() {
       </aside>
 
       {/* Right Content Area */}
-      <main className="w-full lg:w-3/4 flex flex-col gap-4">
+      <main className="relative w-full lg:w-3/4 flex flex-col gap-2 min-h-[600px]">
         <ContentNavtabs />
         <ContentSearch />
         <ProductList />
-        <Pagination
-          currentPage={1}
-          totalPages={7}
-          onPageChange={(page) => console.log("Go to page:", page)}
-        />
+
+        {/* Fixed Pagination */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <Pagination
+            currentPage={1}
+            totalPages={7}
+            onPageChange={(page) => console.log("Go to page:", page)}
+          />
+        </div>
       </main>
     </div>
   );
