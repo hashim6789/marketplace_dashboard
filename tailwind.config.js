@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         procureBlue: "#304EA1",
+        black01: "#010101",
       },
     },
   },
