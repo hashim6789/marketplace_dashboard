@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{ts,tsx}", // Include TS/TSX files
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        procureBlue: "#304EA1",
+      },
+    },
   },
   plugins: [],
 };
