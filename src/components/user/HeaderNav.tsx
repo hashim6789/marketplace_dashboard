@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function HeaderNav() {
   const [isOpen, setIsOpen] = useState(false);
