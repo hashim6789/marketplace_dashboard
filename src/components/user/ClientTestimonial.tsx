@@ -1,66 +1,77 @@
-import React, { useRef } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import ClientCard from "./ClientCard";
+import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import logo from "../../assets/img/iprocure_logo.png";
 
 const clients = [
   { name: "3M", logo: "/logos/3m.png" },
-  { name: "amefhum", logo: "/logos/amefhum.png" },
-  { name: "DAIKIN", logo: "/logos/daikin.png" },
+  { name: "Amentum", logo: "/logos/amentum.png" },
+  { name: "Daikin", logo: "/logos/daikin.png" },
   { name: "GE", logo: "/logos/ge.png" },
-  { name: "Airwhale", logo: "/logos/airwhale.png" },
+  { name: "Airwheel", logo: "/logos/airwheel.png" },
+  { name: "Samsung", logo: "/logos/samsung.png" },
 ];
 
-function ClientTestimonial() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const ClientCarousel: React.FC = () => {
+  const [index, setIndex] = useState(0);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -250 : 250,
-        behavior: "smooth",
-      });
-    }
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? clients.length - 1 : prev - 1));
   };
 
+  const nextSlide = () => {
+    setIndex((prev) => (prev === clients.length - 1 ? 0 : prev + 1));
+  };
+
+  const visibleClients =
+    clients.slice(index, index + 5).length < 5
+      ? [
+          ...clients.slice(index),
+          ...clients.slice(0, 5 - (clients.length - index)),
+        ]
+      : clients.slice(index, index + 5);
+
   return (
-    <div className="w-full px-4 py-8 bg-[#F2F2F2] text-[#000000]">
-      <h2 className="text-lg font-semibold mb-6 text-center transition-all duration-300 hover:text-gray-800">
+    <div className="w-full bg-[#F2F2F2] py-10 px-4 sm:px-6 md:px-12 flex flex-col items-center">
+      <h2 className="text-center font-[400] text-[28px] sm:text-[32px] md:text-[36.67px] leading-[100%] tracking-[0%] font-poppins mb-8 sm:mb-10">
         Trusted by leading Clients
       </h2>
 
-      <div className="relative max-w-5xl mx-auto">
-        {/* Left Arrow */}
+      <div className="relative flex items-center justify-center w-full max-w-6xl overflow-hidden">
+        {/* Left Button */}
         <button
-          onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white border rounded-full p-2 shadow transition-all duration-300 hover:bg-gray-100"
+          onClick={prevSlide}
+          className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
         >
-          <ChevronLeftIcon className="w-6 h-6 text-[#000000]" />
+          <ChevronLeft size={20} />
         </button>
 
-        {/* Logo Carousel */}
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto space-x-6 px-12 py-2 scrollbar-hide"
-        >
-          {clients.map((client) => (
-            <ClientCard
-              key={client.name}
-              name={client.name}
-              logo={client.logo}
-            />
+        {/* Logo Row */}
+        <div className="flex gap-4 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto scrollbar-hide">
+          {visibleClients.map((client, idx) => (
+            <div
+              key={idx}
+              className="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center bg-white rounded-md shadow-sm hover:shadow-md transition"
+            >
+              <img
+                src={logo}
+                // src={client.logo}
+                alt={client.name}
+                className="max-h-16 sm:max-h-20 object-contain"
+              />
+            </div>
           ))}
         </div>
 
-        {/* Right Arrow */}
+        {/* Right Button */}
         <button
-          onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white border rounded-full p-2 shadow transition-all duration-300 hover:bg-gray-100"
+          onClick={nextSlide}
+          className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
         >
-          <ChevronRightIcon className="w-6 h-6 text-[#000000]" />
+          <ChevronRight size={20} />
         </button>
       </div>
     </div>
   );
-}
+};
 
-export default ClientTestimonial;
+export default ClientCarousel;
