@@ -13,7 +13,7 @@ function Products() {
       </aside>
 
       {/* Right Content Area */}
-      <main className="w-full lg:w-3/4 flex flex-col gap-4">
+      <main className="w-full lg:w-3/4 flex flex-col gap-2">
         <ContentNavtabs />
         <ContentSearch />
         <ProductList />
