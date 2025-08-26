@@ -23,16 +23,16 @@ const ClientCarousel: React.FC = () => {
   };
 
   const visibleClients =
-    clients.slice(index, index + 4).length < 4
+    clients.slice(index, index + 5).length < 5
       ? [
           ...clients.slice(index),
-          ...clients.slice(0, 4 - (clients.length - index)),
+          ...clients.slice(0, 5 - (clients.length - index)),
         ]
-      : clients.slice(index, index + 4);
+      : clients.slice(index, index + 5);
 
   return (
-    <div className="w-full bg-[#F2F2F2] py-10 px-6 md:px-12 flex flex-col items-center">
-      <h2 className="text-center font-[400] text-[36.67px] leading-[100%] tracking-[0%] font-poppins mb-10">
+    <div className="w-full bg-[#F2F2F2] py-10 px-4 sm:px-6 md:px-12 flex flex-col items-center">
+      <h2 className="text-center font-[400] text-[28px] sm:text-[32px] md:text-[36.67px] leading-[100%] tracking-[0%] font-poppins mb-8 sm:mb-10">
         Trusted by leading Clients
       </h2>
 
@@ -40,26 +40,23 @@ const ClientCarousel: React.FC = () => {
         {/* Left Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
+          className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
         >
-          <span className="text-[20px] font-semibold text-[#333]">
-            {" "}
-            <ChevronLeft />
-          </span>
+          <ChevronLeft size={20} />
         </button>
 
         {/* Logo Row */}
-        <div className="flex gap-8 px-12 overflow-hidden">
+        <div className="flex gap-4 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto scrollbar-hide">
           {visibleClients.map((client, idx) => (
             <div
               key={idx}
-              className="w-28 h-28 flex items-center justify-center bg-white rounded-md shadow-sm hover:shadow-md transition"
+              className="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center bg-white rounded-md shadow-sm hover:shadow-md transition"
             >
               <img
                 src={logo}
                 // src={client.logo}
                 alt={client.name}
-                className="max-h-20 object-contain"
+                className="max-h-16 sm:max-h-20 object-contain"
               />
             </div>
           ))}
@@ -68,11 +65,9 @@ const ClientCarousel: React.FC = () => {
         {/* Right Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
+          className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 bg-[#F2F2F2] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-[#d6d6d6] transition"
         >
-          <span className="text-[20px] font-semibold text-[#333]">
-            <ChevronRight />
-          </span>
+          <ChevronRight size={20} />
         </button>
       </div>
     </div>
