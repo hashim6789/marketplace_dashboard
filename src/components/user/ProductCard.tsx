@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import type { Product } from "../../types";
-import productImage from "../../assets/img/product_01.png";
 import Button from "../ui/Button";
 
 interface ProductCardProps {
@@ -13,7 +12,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <div className="flex flex-col gap-4 items-center sm:items-start p-4">
         {/* Product Image */}
         <img
-          src={productImage}
+          src={product.images[0]}
           alt={product.name}
           className="w-full max-w-[220px] h-auto object-contain"
         />

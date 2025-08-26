@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminRoutes from "./AdminRoutes";
+// import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 import NotFound from "../pages/NotFound";
 
@@ -8,10 +8,10 @@ const AppRouter = () => {
     <Router>
       <Routes>
         {/* User Routes */}
-        <Route path="/*" element={<UserRoutes />} />
+        <Route path="/user/*" element={<UserRoutes />} />
 
         {/* Admin Routes */}
-        <Route path="/admin/*" element={<AdminRoutes />} />
+        {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
 
         {/* Fallback */}
         <Route path="*" element={<NotFound />} />
