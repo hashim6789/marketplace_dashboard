@@ -17,7 +17,11 @@ function Products() {
         <ContentNavtabs />
         <ContentSearch />
         <ProductList />
-        <Pagination />
+        <Pagination
+          currentPage={1}
+          totalPages={7}
+          onPageChange={(page) => console.log("Go to page:", page)}
+        />
       </main>
     </div>
   );
