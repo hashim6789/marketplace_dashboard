@@ -6,14 +6,14 @@ import ProductList from "../../components/user/ProductList";
 
 function Products() {
   return (
-    <div className="flex flex-col lg:flex-row gap-6 px-4 py-6">
+    <div className="flex flex-col lg:flex-row gap-6 px-16 py-6">
       {/* Left Sidebar: Filters */}
       <aside className="w-full lg:w-1/4">
         <Filters />
       </aside>
 
       {/* Right Content Area */}
-      <main className="relative w-full lg:w-3/4 flex flex-col gap-2 min-h-[600px]">
+      <main className="relative w-full flex flex-col gap-2 min-h-[600px]">
         <ContentNavtabs />
         <ContentSearch />
         <ProductList />

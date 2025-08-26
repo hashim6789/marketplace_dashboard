@@ -23,7 +23,7 @@ const Layout: React.FC = () => {
           <img src={houseIcon} alt="Home" className="w-4 h-4 inline-block" />
         }
       />
-      <main className="flex-grow container mx-20 py-12">
+      <main className="flex-grow container py-12">
         <Banner
           title="Durable Construction: The 3M 6200 half face respirator, ensuring a durable and long-lasting product."
           buttonText="Buy Now"
