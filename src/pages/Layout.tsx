@@ -6,6 +6,7 @@ import Breadcrumbs from "../components/user/BreadCrumbs";
 import { HomeIcon } from "lucide-react";
 import Banner from "../components/user/Banner";
 import bannerImage from "../assets/img/banner_01.jpg";
+import ClientTestimonial from "../components/user/ClientTestimonial";
 
 const breadcrumbItems = [
   { label: "Home", href: "/" },
@@ -29,6 +30,7 @@ const Layout: React.FC = () => {
         />
         <Outlet />
       </main>
+      <ClientTestimonial />
       <Footer />
     </div>
   );
