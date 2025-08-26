@@ -5,17 +5,19 @@ function ContentSearch() {
   return (
     <div className="w-full px-4">
       {/* Search header */}
-      <div className="flex items-center  justify-between mb-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-2">
+        {/* Search label */}
         <p className="text-sm text-[#000000] font-semibold">
           Showing results for:{" "}
-          <span className=" text-[#304EA1]">
+          <span className="text-[#304EA1]">
             Road alignment planning and design
           </span>
         </p>
 
-        <div className="flex items-center gap-6">
+        {/* Search controls */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
           {/* Search input */}
-          <div className="relative w-32">
+          <div className="relative w-full sm:w-40">
             <input
               type="text"
               placeholder="Search"
@@ -27,7 +29,7 @@ function ContentSearch() {
           </div>
 
           {/* Dropdown */}
-          <div className="w-32">
+          <div className="w-full sm:w-40">
             <select className="w-full border border-[#6A6A6A] rounded-md text-sm px-3 py-[6px] text-[#6A6A6A] focus:outline-none focus:ring-1 focus:ring-[#304EA1]">
               <option>Latest</option>
               <option>Most Relevant</option>

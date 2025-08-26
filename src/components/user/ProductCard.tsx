@@ -10,24 +10,21 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="border border-[#E0E0E0] rounded-md bg-white shadow-sm hover:shadow-md transition duration-200 w-full">
-      <div className="flex flex-col gap-4 items-start">
+      <div className="flex flex-col gap-4 items-center sm:items-start p-4">
         {/* Product Image */}
         <img
           src={productImage}
-          // src={product.images[0]}
           alt={product.name}
-          className="w-64 h-64 object-contain"
+          className="w-full max-w-[220px] h-auto object-contain"
         />
 
         {/* Product Details */}
-        <div className="flex flex-col justify-between px-4 flex-grow">
+        <div className="flex flex-col justify-between w-full">
           <div>
-            <p className="text-xs text-[#828282] mb-1">
-              Brand: {product.vendor}
-            </p>
-            <h3 className="text-sm font-semibold text-[#333333] mb-1">
+            <h3 className="text-sm font-semibold text-[#333333] mb-1 truncate">
               {product.name}
             </h3>
+
             <p className="text-xs text-[#828282] mb-1">
               UNSPSC: <span className="font-semibold">{product.unspc}</span>
             </p>
@@ -37,7 +34,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             </p>
           </div>
 
-          <div className="my-6">
+          <div className="my-4">
             <Button
               label="Send Enquiry"
               color="standard"
