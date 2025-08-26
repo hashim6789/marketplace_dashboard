@@ -13,31 +13,37 @@ interface BreadcrumbsProps {
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, icon }) => {
   return (
     <nav
-      className="bg-gray-100 text-gray-700 py-4 px-2 sm:py-5 sm:px-3 w-full overflow-x-auto"
+      className="bg-[#F2F2F2] text-[#424242] py-6 px-20 w-full font-roboto"
       aria-label="Breadcrumb"
     >
-      <ol className="flex items-center space-x-2">
-        {/* Icon before first breadcrumb */}
-        <li className="flex items-center">
-          <span className="text-sm">{icon}</span>
-          <span className="mx-2 text-sm">/</span>
+      <ol className="flex items-center space-x-3">
+        {/* Icon + Home */}
+        <li className="flex items-center space-x-3">
+          <span className="w-[16px] h-[16px] flex items-center justify-center">
+            {icon}
+          </span>
+          <a
+            href={items[0]?.href}
+            className="text-md font-normal focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            {items[0]?.label}
+          </a>
         </li>
 
-        {items.map((item, index) => (
-          <li key={item.label} className="flex items-center">
+        {/* Remaining items */}
+        {items.slice(1).map((item, index) => (
+          <li key={item.label} className="flex items-center space-x-3">
+            <span className="text-[14px] font-normal">/</span>
             <a
               href={item.href}
               className={clsx(
-                "text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500",
-                index === items.length - 1 && "pointer-events-none"
+                "text-md font-normal  focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                index === items.length - 2 && "pointer-events-none"
               )}
-              aria-current={index === items.length - 1 ? "page" : undefined}
+              aria-current={index === items.length - 2 ? "page" : undefined}
             >
               {item.label}
             </a>
-            {index < items.length - 1 && (
-              <span className="mx-2 text-sm">/</span>
-            )}
           </li>
         ))}
       </ol>
