@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import logo from "../../assets/img/iprocure_logo.png";
+import clientLogo1 from "../../assets/img/client_logo_01.png";
+import clientLogo2 from "../../assets/img/client_logo_02.jpg";
+import clientLogo3 from "../../assets/img/client_logo_03.jpg";
+import clientLogo4 from "../../assets/img/client_logo_04.png";
+import clientLogo5 from "../../assets/img/client_logo_05.jpg";
 
 const clients = [
-  { name: "3M", logo: "/logos/3m.png" },
-  { name: "Amentum", logo: "/logos/amentum.png" },
-  { name: "Daikin", logo: "/logos/daikin.png" },
-  { name: "GE", logo: "/logos/ge.png" },
-  { name: "Airwheel", logo: "/logos/airwheel.png" },
-  { name: "Samsung", logo: "/logos/samsung.png" },
+  { name: "3M", logo: clientLogo1 },
+  { name: "Amentum", logo: clientLogo2 },
+  { name: "Daikin", logo: clientLogo3 },
+  { name: "Airwheel", logo: clientLogo4 },
+  { name: "GE", logo: clientLogo5 },
+  { name: "Samsung", logo: clientLogo1 },
+  { name: "Samsung", logo: clientLogo2 },
+  { name: "Daikin", logo: clientLogo3 },
+  { name: "Airwheel", logo: clientLogo4 },
+  { name: "GE", logo: clientLogo5 },
 ];
 
 const ClientCarousel: React.FC = () => {
@@ -53,10 +61,9 @@ const ClientCarousel: React.FC = () => {
               className="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center bg-white rounded-md shadow-sm hover:shadow-md transition"
             >
               <img
-                src={logo}
-                // src={client.logo}
+                src={client.logo}
                 alt={client.name}
-                className="max-h-16 sm:max-h-20 object-contain"
+                className="max-h-16 sm:max-h-20 object-contain filter grayscale"
               />
             </div>
           ))}

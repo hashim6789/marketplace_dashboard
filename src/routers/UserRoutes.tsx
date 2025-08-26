@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Products from "../pages/user/Products";
-import NotFound from "../pages/NotFound";
+// import NotFound from "../pages/NotFound";
 import Layout from "../pages/Layout";
 
 const UserRoutes = () => {
@@ -8,7 +8,6 @@ const UserRoutes = () => {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/products" element={<Products />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

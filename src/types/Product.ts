@@ -1,6 +1,5 @@
 export interface Product {
   name: string;
-  brandLogo: string;
   unspc: string;
   price: number;
   stock: number;
