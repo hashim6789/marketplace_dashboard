@@ -6,7 +6,6 @@ import Breadcrumbs from "../components/user/BreadCrumbs";
 import { HomeIcon } from "lucide-react";
 import Banner from "../components/user/Banner";
 import bannerImage from "../assets/img/banner_01.jpg";
-import logo from "../assets/img/iprocure_logo.png";
 
 const breadcrumbItems = [
   { label: "Home", href: "/" },
