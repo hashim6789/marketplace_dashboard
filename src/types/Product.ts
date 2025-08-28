@@ -7,5 +7,7 @@ export interface Product {
   description: string;
   images: string[];
   vendor: string;
-  status: "active" | "out-of-stock";
+  status: ProductStatus;
 }
+
+export type ProductStatus = "active" | "out-of-stock";
