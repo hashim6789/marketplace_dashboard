@@ -1,11 +1,19 @@
-import { Search } from "lucide-react";
+import { useProducts } from "../../hooks/useProducts";
+import { sortOptions, type SortType } from "../../types";
+import Dropdown from "../ui/Dropdown";
+import SearchBar from "../ui/Searchbar";
+import { useState } from "react";
 
 function ContentSearch() {
+  const [selected, setSelected] = useState<SortType>("latest");
+  const [query, setQuery] = useState("");
+
+  const { products, loading } = useProducts({ query, sortBy: selected });
+
   return (
     <div className="w-full px-4">
       {/* Search header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-2">
-        {/* Search label */}
         <p className="text-sm text-[#000000] font-semibold">
           Showing results for:{" "}
           <span className="text-[#304EA1]">
@@ -13,29 +21,39 @@ function ContentSearch() {
           </span>
         </p>
 
-        {/* Search controls */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
-          {/* Search input */}
-          <div className="relative w-full sm:w-40">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full pr-10 pl-3 py-[6px] border border-[#6A6A6A] rounded-md text-sm text-[#6A6A6A] placeholder-[#BDBDBD] focus:outline-none focus:ring-1 focus:ring-[#304EA1]"
-            />
-            <span className="absolute right-3 top-2.5 text-sm">
-              <Search className="w-4 h-4 text-[#6A6A6A]" />
-            </span>
-          </div>
-
-          {/* Dropdown */}
-          <div className="w-full sm:w-40">
-            <select className="w-full border border-[#6A6A6A] rounded-md text-sm px-3 py-[6px] text-[#6A6A6A] focus:outline-none focus:ring-1 focus:ring-[#304EA1]">
-              <option>Latest</option>
-              <option>Most Relevant</option>
-              <option>Popular</option>
-            </select>
-          </div>
+          <SearchBar
+            value={query}
+            onChange={setQuery}
+            placeholder="Search items..."
+          />
+          <Dropdown
+            options={sortOptions}
+            value={selected}
+            onChange={setSelected}
+          />
         </div>
+      </div>
+
+      {/* Product results */}
+      <div className="mt-4">
+        {loading ? (
+          <p className="text-sm text-gray-500">Loading products...</p>
+        ) : products.length === 0 ? (
+          <p className="text-sm text-red-500">No products found.</p>
+        ) : (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {products.map((product) => (
+              <li key={product.unspc} className="border p-3 rounded-md">
+                <h3 className="font-semibold text-[#304EA1]">{product.name}</h3>
+                <p className="text-sm text-gray-600">{product.description}</p>
+                <p className="text-xs text-gray-400">
+                  Vendor: {product.vendor}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

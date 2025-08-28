@@ -11,3 +11,10 @@ export interface Product {
 }
 
 export type ProductStatus = "active" | "out-of-stock";
+
+export type SortType =
+  | "priceLowToHigh"
+  | "priceHighToLow"
+  | "A-Z"
+  | "Z-A"
+  | "latest";
