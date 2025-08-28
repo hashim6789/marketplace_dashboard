@@ -11,11 +11,14 @@ const NotFound: React.FC = () => {
         Sorry, the page you're looking for doesn't exist or has been moved.
         Let's get you back on track.
       </p>
+      <h2 className="text-2xl font-bold text-[#304EA1] bg-[#F0F4FF] px-4 py-2 rounded-md shadow-sm">
+        Please Enter the Go To Products Page
+      </h2>
       <Link
         to="/user/products"
         className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors duration-200"
       >
-        Go Home
+        Go Products Page
       </Link>
     </div>
   );
