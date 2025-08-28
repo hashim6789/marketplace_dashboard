@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
 import FilterSection from "./FilterSection";
-import { FILTER_DATA, type SelectedFilters } from "../../types";
+import { type SelectedFilters } from "../../types";
+import { FILTER_DATA } from "../../constants";
 
 const Filters: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
