@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../ui/Button";
+import { FALLBACK_IMAGE } from "../../constants";
 
 interface ProductBannerProps {
   imageUrl: string;
@@ -16,12 +17,10 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
   buttonText,
   onButtonClick,
 }) => {
-  const fallbackImage =
-    "https://via.placeholder.com/1200x400?text=No+Image+Available";
   const [imgSrc, setImgSrc] = useState(imageUrl);
 
   const handleImageError = () => {
-    setImgSrc(fallbackImage);
+    setImgSrc(FALLBACK_IMAGE);
   };
   return (
     <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden shadow-lg">

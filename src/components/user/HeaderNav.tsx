@@ -1,15 +1,8 @@
 import { useState } from "react";
+import { navItems } from "../../constants";
 
 function HeaderNav() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    "Products",
-    "Suppliers",
-    "Services",
-    "ServicePartners",
-    "RFQ Marketplace",
-  ];
 
   return (
     <nav style={{ backgroundColor: "#304EA1" }} className="text-white">

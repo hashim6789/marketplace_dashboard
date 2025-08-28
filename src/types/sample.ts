@@ -5,22 +5,6 @@ import productImage3 from "../assets/img/product_03.png";
 import productImage4 from "../assets/img/product_04.png";
 import productImage5 from "../assets/img/product_05.png";
 
-export const sortOptions: SortOptionType[] = [
-  { item: "Latest", value: "latest" },
-  { item: "A-Z", value: "A-Z" },
-  { item: "Z-A", value: "Z-A" },
-  { item: "Price Low -> High", value: "priceLowToHigh" },
-  { item: "Price High -> Low", value: "priceHighToLow" },
-];
-
-export type SortOptionType = { item: string; value: string };
-
-export interface ListResponse<T> {
-  data: T[];
-  totalPages: number;
-  currentPage: number;
-}
-
 export const productsList: Product[] = [
   {
     name: "3M Speedglas Welding Helmet",

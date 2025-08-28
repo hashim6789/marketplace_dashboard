@@ -16,7 +16,7 @@ const initialState: ProductState = {
   products: productsList,
   currentPage: 1,
   totalPage: 1,
-  limit: 12,
+  limit: 8,
   sortBy: "",
   category: "",
   status: "active",

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store";
 import { setProducts, setTotalPage } from "../store/slices/productSlice";
 import { productsList, type ListResponse, type Product } from "../types";
-import axiosInstance from "../configs/axios";
+import { axiosInstance } from "../configs";
 
 export function useProducts() {
   const dispatch = useDispatch();
