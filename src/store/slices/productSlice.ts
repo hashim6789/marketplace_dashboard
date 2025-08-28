@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { Product, ProductStatus } from "../../types";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { productsList, type Product, type ProductStatus } from "../../types";
 
 interface ProductState {
   products: Product[];
@@ -13,7 +13,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-  products: [],
+  products: productsList,
   currentPage: 1,
   totalPage: 1,
   limit: 12,
@@ -26,8 +26,31 @@ const initialState: ProductState = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
+    },
+    setSortBy(state, action: PayloadAction<string>) {
+      state.sortBy = action.payload;
+    },
+
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    setTotalPage(state, action: PayloadAction<number>) {
+      state.totalPage = action.payload;
+    },
+    setProducts(state, action: PayloadAction<Product[]>) {
+      state.products = action.payload;
+    },
+  },
 });
 
-// export const {} = productSlice.actions;
+export const {
+  setCurrentPage,
+  setTotalPage,
+  setProducts,
+  setSearch,
+  setSortBy,
+} = productSlice.actions;
 export default productSlice.reducer;
