@@ -1,9 +1,5 @@
 import clsx from "clsx";
-
-interface BreadcrumbItem {
-  label: string;
-  href?: string;
-}
+import type { BreadcrumbItem } from "../../types";
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];

@@ -7,11 +7,7 @@ import Banner from "../components/user/Banner";
 import bannerImage from "../assets/img/banner_01.jpg";
 import ClientTestimonial from "../components/user/ClientTestimonial";
 import houseIcon from "../assets/svg/house-solid-full.svg";
-
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Product", href: "/products" },
-];
+import { breadcrumbItems } from "../constants";
 
 const Layout: React.FC = () => {
   return (

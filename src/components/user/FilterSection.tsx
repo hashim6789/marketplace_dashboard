@@ -1,10 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-
-interface FilterOption {
-  label: string;
-  count: number;
-}
+import type { FilterOption } from "../../types";
 
 interface FilterSectionProps {
   title: string;

@@ -20,11 +20,7 @@ function Products() {
 
         {/* Fixed Pagination */}
         <div className="absolute bottom-0 left-0 w-full">
-          <Pagination
-            currentPage={1}
-            totalPages={7}
-            onPageChange={(page) => console.log("Go to page:", page)}
-          />
+          <Pagination />
         </div>
       </main>
     </div>

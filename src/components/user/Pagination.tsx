@@ -1,16 +1,23 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../store";
+import { setCurrentPage } from "../../store/slices/productSlice";
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+const Pagination: React.FC = () => {
+  const dispatch = useDispatch();
+  const currentPage = useSelector(
+    (state: RootState) => state.products.currentPage
+  );
+  const totalPages = useSelector(
+    (state: RootState) => state.products.totalPage
+  );
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
+  const onPageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      dispatch(setCurrentPage(page));
+    }
+  };
+
   const generatePages = () => {
     const pages: (number | string)[] = [];
 
@@ -37,7 +44,6 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex justify-center items-center gap-2 mt-6 px-4 flex-wrap sm:flex-nowrap">
-        {/* Previous Button */}
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -50,7 +56,6 @@ const Pagination: React.FC<PaginationProps> = ({
           Previous
         </button>
 
-        {/* Page Numbers */}
         {pages.map((page, index) =>
           typeof page === "number" ? (
             <button
@@ -74,7 +79,6 @@ const Pagination: React.FC<PaginationProps> = ({
           )
         )}
 
-        {/* Next Button */}
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}

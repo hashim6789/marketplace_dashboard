@@ -14,7 +14,7 @@ const MainSearchBar: React.FC<SearchBarProps> = ({ categories, onSearch }) => {
       if (query.trim()) {
         onSearch(query, selectedCategory);
       }
-    }, 500); // ⏱ Adjust debounce delay as needed
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [onSearch, query, selectedCategory]);
