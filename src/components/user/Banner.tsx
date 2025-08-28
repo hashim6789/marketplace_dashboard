@@ -5,7 +5,6 @@ import { FALLBACK_IMAGE } from "../../constants";
 interface ProductBannerProps {
   imageUrl: string;
   title: string;
-  subtitle?: string;
   buttonText?: string;
   onButtonClick?: () => void;
 }
@@ -13,7 +12,6 @@ interface ProductBannerProps {
 const ProductBanner: React.FC<ProductBannerProps> = ({
   imageUrl,
   title,
-  subtitle,
   buttonText,
   onButtonClick,
 }) => {
@@ -22,29 +20,40 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
   const handleImageError = () => {
     setImgSrc(FALLBACK_IMAGE);
   };
+
   return (
-    <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-10/12 mx-auto h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-3xl mt-12 overflow-hidden shadow-2xl">
+      {/* Background Image */}
       <img
         src={imgSrc}
-        alt={title}
-        className="w-full h-full object-cover"
+        alt="Product Banner"
         onError={handleImageError}
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent flex flex-col justify-center items-start p-6 text-white">
-        <h2 className="text-xl sm:text-2xl font-bold">{title}</h2>
-        {subtitle && <p className="text-sm sm:text-base mt-2">{subtitle}</p>}
-        {buttonText && onButtonClick && (
-          <Button
-            label={buttonText}
-            color="standard"
-            variant="solid"
-            className="rounded-full mt-4"
-            rounded="full"
-            size="lg"
-            type="button"
-            onClick={onButtonClick}
-          />
-        )}
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/40"></div>
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 w-8/12">
+        <h1 className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal leading-tight mb-3 sm:mb-4">
+          {title}
+        </h1>
+
+        <div className=" inset-0 bg-gradient-to-r from-black via-black/70 to-transparent flex flex-col justify-center items-start p-6 text-white">
+          {buttonText && onButtonClick && (
+            <Button
+              label={buttonText}
+              color="standard"
+              variant="solid"
+              className="rounded-full mt-2"
+              rounded="full"
+              size="lg"
+              type="button"
+              onClick={onButtonClick}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
